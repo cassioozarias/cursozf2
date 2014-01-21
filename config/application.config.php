@@ -1,8 +1,7 @@
 <?php
 return array(
     'modules' => array(
-//        'Application',
-        'Livraria',
+        'Livraria'
     ),
 
     'module_listener_options' => array(
