@@ -2,7 +2,8 @@
 
 namespace Livraria;
 
-
+use Zend\Mvc\MoudeRouteListiner;
+use Zend\Mvc\MvcEvent;
 
 class Module {
 
@@ -14,10 +15,10 @@ class Module {
         return array(
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
+                    __NAMESPACE__. 'Admin' => __DIR__ . '/src/' . __NAMESPACE__."Admin",
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
             ),
         );
     }
-
 }
