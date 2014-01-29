@@ -8,7 +8,7 @@ use Zend\Db\TableGateway\AbstractTableGateway;
 
 class CategoriaTable extends AbstractTableGateway {
     
-    protected $table = "categoria";
+    protected $table = "categorias";
     
     public function __construct(Adapter $adapter) {
         $this->adapter = $adapter;

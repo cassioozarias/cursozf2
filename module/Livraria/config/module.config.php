@@ -15,6 +15,15 @@ return array(
                     ),
                 ),
             ),
+            'livraria-admin-interna' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/admin/[:controller[/:action]][/:id]',
+                    'constraints' => array(
+                     'id'=> '[0-9]+'   
+                    )
+                ),
+            ),
             'livraria-admin' => array(
                 'type' => 'segment',
                 'options' => array(
@@ -30,7 +39,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Livraria\Controller\Index' => 'Livraria\Controller\IndexController',
-            'categoria' => 'LivrariaAdmin\Controller\CategoriasController'
+            'categorias' => 'LivrariaAdmin\Controller\CategoriasController'
         ),
     ),
     'view_manager' => array(
