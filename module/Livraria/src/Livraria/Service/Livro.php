@@ -14,7 +14,7 @@ class Livro extends AbstractService {
     public function insert(array $data) {
         $entity = new $this->entity($data);
         
-        $categoria = $this->em->getReference("Livraria\Entity\Categoria" , $data['categoria_id']);       
+        $categoria = $this->em->getReference("Livraria\Entity\Categoria" , $data['categoria']);       
         $entity->setCategoria($categoria);
         
         $this->em->persist($entity);
@@ -27,7 +27,7 @@ class Livro extends AbstractService {
       $entity = $this->em->getReference($this->entity, $data['id']);
       $entity = configurator::configure($entity,$data);
       
-       $categoria = $this->em->getReference("Livraria\Entity\Categoria" , $data['categoria_id']);       
+       $categoria = $this->em->getReference("Livraria\Entity\Categoria" , $data['categoria']);       
        $entity->setCategoria($categoria);
        
        $this->em->persist($entity);
