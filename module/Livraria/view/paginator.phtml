@@ -4,7 +4,7 @@ $formatUrl = function ($page) use ($urlPattern) {
             if (!preg_match('/page/', $urlPattern))
                 return $urlPattern . "/page/" . $page;
             else
-                return preg_replace('/\d/', $page, $urlPattern);
+                return preg_replace('/\d{1,100}/', $page, $urlPattern);
         };
 ?>
 <center>
@@ -16,7 +16,7 @@ $formatUrl = function ($page) use ($urlPattern) {
 
             <!-- First page link -->
     <?php if (isset($this->previous)): ?>
-                <a href="<?php echo $formatUrl($this->previous) ?>">
+                <a href="<?php echo $formatUrl($this->first) ?>">
                     Primeira
                 </a> |
     <?php else: ?>
@@ -46,7 +46,7 @@ $formatUrl = function ($page) use ($urlPattern) {
 
             <!-- Last page link -->
     <?php if (isset($this->next)): ?>
-                <a href="<?php echo $formatUrl($this->next); ?>">
+                <a href="<?php echo $formatUrl($this->last); ?>">
                     Último
                 </a>
     <?php else: ?>

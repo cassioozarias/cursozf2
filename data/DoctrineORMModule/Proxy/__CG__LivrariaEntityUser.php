@@ -93,12 +93,6 @@ class User extends \Livraria\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         return parent::setPassword($password);
     }
 
-    public function getSalt()
-    {
-        $this->__load();
-        return parent::getSalt();
-    }
-
     public function encryptPassword($password)
     {
         $this->__load();
@@ -114,7 +108,7 @@ class User extends \Livraria\Entity\User implements \Doctrine\ORM\Proxy\Proxy
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'nome', 'email', 'password', 'salt');
+        return array('__isInitialized__', 'id', 'nome', 'email', 'password');
     }
 
     public function __clone()

@@ -57,7 +57,7 @@ class Categoria {
         return $this->nome;
     }
     
-    public function __getLivros() {
+    public function getLivros() {
         return $this->livros;
     }
 

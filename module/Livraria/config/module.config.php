@@ -34,6 +34,26 @@ return array(
                 ),
              ),
           ),
+            'livraria-admin-auth' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin/auth',
+                    'defaults' => array(
+                        'action' => 'index',
+                        'controller' => 'livraria-admin/auth'
+                ),
+             ),
+          ),
+            'livraria-admin-logout' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin/auth/logout',
+                    'defaults' => array(
+                        'action' => 'logout',
+                        'controller' => 'livraria-admin/auth'
+                ),
+             ),
+          ),
        ),
     ),  
     'controllers' => array(
@@ -42,7 +62,13 @@ return array(
             'categorias' => 'LivrariaAdmin\Controller\CategoriasController',
             'livros' => 'LivrariaAdmin\Controller\LivrosController',
             'users' => 'LivrariaAdmin\Controller\UsersController',
+            'livraria-admin/auth' => 'LivrariaAdmin\Controller\AuthController',
         ),
+    ),
+    
+    'module_layouts' => Array(
+        'Livraria' => 'layout/layout',
+        'LivrariaAdmin' => 'layout/layout-admin'
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,

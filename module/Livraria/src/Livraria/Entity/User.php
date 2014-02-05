@@ -37,11 +37,6 @@ class User {
      */
     protected $password;
 
-    /**
-     * @ORM\Column(type="text")
-     * @var string
-     */
-    protected $salt;
 
     public function __construct($options = null) {
         Configurator::configure($this, $options);
@@ -79,19 +74,14 @@ class User {
         return $this->password;
     }
 
-    public function setPassword($password) {
-
+    public function setPassword($password) {        
         $hashSenha = $this->encryptPassword($password);
         $this->password = $hashSenha;
         return $this;
     }
-
-    public function getSalt() {
-        return $this->salt;
-    }
-
+            
     public function encryptPassword($password) {
-        $hashSenha = hash('sha512', $password . $this->salt);
+        $hashSenha = hash('sha512', $password );
         for ($i = 0; $i < 64000; $i++) {
             $hashSenha = hash('sha512', $hashSenha);
         }
