@@ -1,11 +1,11 @@
 <?php
 
-namespace Livraria\Model;
+namespace Loja\Model;
 
 class CategoriaService {
 
     /**
-     * @var Livraria\Model\CategoriaTable
+     * @var Loja\Model\CategoriaTable
      */
     protected $categoriaTable;
     

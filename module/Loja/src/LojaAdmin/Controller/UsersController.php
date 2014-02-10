@@ -1,17 +1,17 @@
 <?php
 
-namespace LivrariaAdmin\Controller;
+namespace LojaAdmin\Controller;
 
 use Zend\View\Model\ViewModel;
 
 class UsersController extends CrudController {
 
     public function __construct() {
-        $this->entity = "Livraria\Entity\User";
-        $this->form = "LivrariaAdmin\Form\User";
-        $this->service = "Livraria\Service\User";
+        $this->entity = "Loja\Entity\User";
+        $this->form = "LojaAdmin\Form\User";
+        $this->service = "Loja\Service\User";
         $this->controller = "users";
-        $this->route = "livraria-admin";
+        $this->route = "loja-admin";
     }
       public function editAction() {
         $form = new $this->form();

@@ -1,6 +1,6 @@
 <?php
 
-namespace LivrariaAdmin\Controller;
+namespace LojaAdmin\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController,
     Zend\View\Model\ViewModel;

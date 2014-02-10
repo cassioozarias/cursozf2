@@ -1,15 +1,15 @@
 <?php
 
-namespace LivrariaAdmin\Controller;
+namespace LojaAdmin\Controller;
 
 class CategoriasController extends CrudController {
 
     public function __construct() {
-        $this->entity = "Livraria\Entity\Categoria";
-        $this->form = "LivrariaAdmin\Form\Categoria";
-        $this->service = "Livraria\Service\Categoria";
+        $this->entity = "Loja\Entity\Categoria";
+        $this->form = "LojaAdmin\Form\Categoria";
+        $this->service = "Loja\Service\Categoria";
         $this->controller = "categorias";
-        $this->route = "livraria-admin";
+        $this->route = "loja-admin";
     }
 
 }

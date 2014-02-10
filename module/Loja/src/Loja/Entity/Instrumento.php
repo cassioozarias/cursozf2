@@ -1,15 +1,15 @@
 <?php
 
-namespace Livraria\Entity;
+namespace Loja\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="livros")
- * @ORM\Entity(repositoryClass="Livraria\Entity\LivroRepository")
+ * @ORM\Table(name="instrumentos")
+ * @ORM\Entity(repositoryClass="Loja\Entity\InstrumentoRepository")
  */
-class Livro {
+class Instrumento {
     
     /**
      *
@@ -29,7 +29,7 @@ class Livro {
     protected $nome;
     
     /**
-     *@ORM\ManyToOne(targetEntity="Livraria\Entity\Categoria", inversedBy="livro")
+     *@ORM\ManyToOne(targetEntity="Loja\Entity\Categoria", inversedBy="instrumentos")
      * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
      */
     
@@ -39,19 +39,16 @@ class Livro {
      * @ORM\Column(type="text")
      * @var string
      */
-    protected $autor;
+    protected $marca;
     
     /**
      *@ORM\Column(type="text")
      *@var string
      */
-    protected $isbn;
     
-    /**
-     *@ORM\Column(type="float")
-     *@var float
-     */
     protected $valor;
+    
+    
     
     public function __construct($options = null) {
         Configurator::configure($this, $options);
@@ -68,12 +65,8 @@ class Livro {
         return $this->categoria;
     }
 
-    public function getAutor() {
-        return $this->autor;
-    }
-
-    public function getIsbn() {
-        return $this->isbn;
+    public function getMarca() {
+        return $this->marca;
     }
 
     public function getValor() {
@@ -92,12 +85,8 @@ class Livro {
         $this->categoria = $categoria;
     }
 
-    public function setAutor($autor) {
-        $this->autor = $autor;
-    }
-
-    public function setIsbn($isbn) {
-        $this->isbn = $isbn;
+    public function setMarca($marca) {
+        $this->marca = $marca;
     }
 
     public function setValor($valor) {
@@ -108,8 +97,7 @@ class Livro {
         return array(
           'id'        => $this->getId(),
           'nome'      => $this->getNome(),  
-          'autor'     => $this->getAutor(),
-          'isbn'      => $this->getIsbn(),
+          'marca'     => $this->getMarca(),
           'valor'     => $this->getValor(),
           'categoria' => $this->getCategoria()->getId()
         );

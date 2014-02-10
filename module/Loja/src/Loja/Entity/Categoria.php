@@ -1,6 +1,6 @@
 <?php
 
-namespace Livraria\Entity;
+namespace Loja\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -8,13 +8,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Entity
  * @ORM\Table(name="categorias")
- * @ORM\Entity(repositoryClass="Livraria\Entity\CategoriaRepository")
+ * @ORM\Entity(repositoryClass="Loja\Entity\CategoriaRepository")
  */
 class Categoria {
     
     public function __construct($options = null) {
            Configurator::configure($this,$options);
-           $this->livros = new ArrayCollection();
+           $this->instrumentos = new ArrayCollection();
     }
     /**
      * @ORM\Id
@@ -32,10 +32,10 @@ class Categoria {
     
     /**
      *
-     *@ORM\OneToMany(targetEntity="Livraria\Entity\Livro", mappedBy="categoria")
+     *@ORM\OneToMany(targetEntity="Loja\Entity\Instrumento", mappedBy="categoria")
      */
     
-    protected $livros;
+    protected $instrumentos;
     
     public function getId() {
         return $this->id;
@@ -57,8 +57,8 @@ class Categoria {
         return $this->nome;
     }
     
-    public function getLivros() {
-        return $this->livros;
+    public function getinstrumentos() {
+        return $this->instrumentos;
     }
 
     public function toArray() {

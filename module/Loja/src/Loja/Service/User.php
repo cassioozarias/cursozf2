@@ -1,15 +1,15 @@
 <?php
 
-namespace Livraria\Service;
+namespace Loja\Service;
 
 use Doctrine\ORM\EntityManager;
-use Livraria\Entity\Configurator;
+use Loja\Entity\Configurator;
 
 class User extends AbstractService {
     
     public function __construct(EntityManager $em) {
         parent::__construct($em);
-        $this->entity = "Livraria\Entity\User";
+        $this->entity = "Loja\Entity\User";
     }
     
     public function update(array $data) {

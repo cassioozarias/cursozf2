@@ -1,20 +1,20 @@
 <?php
 
-namespace Livraria\Service;
+namespace Loja\Service;
 
 use Doctrine\ORM\EntityManager; 
-use Livraria\Entity\Configurator;
+use Loja\Entity\Configurator;
 
-class Livro extends AbstractService {
+class Instrumento extends AbstractService {
    
     public function __construct(EntityManager $em) {
         parent::__construct($em);
-        $this->entity = "Livraria\Entity\Livro";
+        $this->entity = "Loja\Entity\Instrumento";
     }
     public function insert(array $data) {
         $entity = new $this->entity($data);
         
-        $categoria = $this->em->getReference("Livraria\Entity\Categoria" , $data['categoria']);       
+        $categoria = $this->em->getReference("Loja\Entity\Categoria" , $data['categoria']);       
         $entity->setCategoria($categoria);
         
         $this->em->persist($entity);
@@ -27,7 +27,7 @@ class Livro extends AbstractService {
       $entity = $this->em->getReference($this->entity, $data['id']);
       $entity = configurator::configure($entity,$data);
       
-       $categoria = $this->em->getReference("Livraria\Entity\Categoria" , $data['categoria']);       
+       $categoria = $this->em->getReference("Loja\Entity\Categoria" , $data['categoria']);       
        $entity->setCategoria($categoria);
        
        $this->em->persist($entity);

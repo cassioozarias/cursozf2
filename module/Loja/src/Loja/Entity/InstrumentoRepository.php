@@ -1,9 +1,9 @@
 <?php
 
-namespace Livraria\Entity;
+namespace Loja\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
-class LivroRepository extends EntityRepository {
+class InstrumentoRepository extends EntityRepository {
     
 }

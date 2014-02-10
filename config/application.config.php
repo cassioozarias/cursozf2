@@ -3,7 +3,7 @@ return array(
     'modules' => array(
         'DoctrineModule',
         'DoctrineORMModule',
-        'Livraria'
+        'Loja'
     ),
 
     'module_listener_options' => array(

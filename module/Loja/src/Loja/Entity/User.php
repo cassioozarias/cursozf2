@@ -1,13 +1,13 @@
 <?php
 
-namespace Livraria\Entity;
+namespace Loja\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
- * @ORM\Entity(repositoryClass="Livraria\Entity\UserRepository")
+ * @ORM\Entity(repositoryClass="Loja\Entity\UserRepository")
  */
 class User {
 

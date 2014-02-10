@@ -1,6 +1,6 @@
 <?php
 
-namespace Livraria\Model;
+namespace Loja\Model;
 
 class Categoria {
 

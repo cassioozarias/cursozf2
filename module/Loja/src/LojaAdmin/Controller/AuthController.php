@@ -1,6 +1,6 @@
 <?php
 
-namespace LivrariaAdmin\Controller;
+namespace LojaAdmin\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController,
     Zend\View\Model\ViewModel;
@@ -8,7 +8,7 @@ use Zend\Mvc\Controller\AbstractActionController,
 use Zend\Authentication\AuthenticationService;
 use Zend\Authentication\Storage\Session as SessionStorage;
 
-use LivrariaAdmin\Form\Login as LoginForm;
+use LojaAdmin\Form\Login as LoginForm;
 
 class AuthController extends AbstractActionController {
     
@@ -25,10 +25,10 @@ class AuthController extends AbstractActionController {
                
                $auth = new AuthenticationService;
                
-               $sessionStorage = new SessionStorage("LivrariaAdmin");
+               $sessionStorage = new SessionStorage("LojaAdmin");
                $auth->setStorage($sessionStorage);
                
-               $authAdapter = $this->getServiceLocator()->get('Livraria\Auth\Adapter');
+               $authAdapter = $this->getServiceLocator()->get('Loja\Auth\Adapter');
                $authAdapter->setUsername($data['email'])
                          ->setPassword($data['password']);
                
@@ -36,7 +36,7 @@ class AuthController extends AbstractActionController {
               
                if($result->isValid()) {
                    $sessionStorage->write($auth->getIdentity() ['user'], null);
-                   return $this->redirect()->toRoute("livraria-admin", array('controller'=>'categorias'));
+                   return $this->redirect()->toRoute("loja-admin", array('controller'=>'categorias'));
                }else
                    $error = true;
             }
@@ -47,9 +47,9 @@ class AuthController extends AbstractActionController {
     
     public function logoutAction() {
         $auth = new AuthenticationService;
-        $auth->setStorage(new SessionStorage('LivrariaAdmin'));
+        $auth->setStorage(new SessionStorage('LojaAdmin'));
         $auth->clearIdentity();
         
-        return $this->redirect()->toRoute('livraria-admin-auth');
+        return $this->redirect()->toRoute('loja-admin-auth');
     }
 }

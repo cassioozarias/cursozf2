@@ -1,6 +1,6 @@
 <?php
 
-namespace Livraria\Auth;
+namespace Loja\Auth;
 
 use Zend\Authentication\Adapter\AdapterInterface,
     Zend\Authentication\Result;
@@ -40,7 +40,7 @@ class Adapter implements AdapterInterface {
     }
     
     public function authenticate() {
-        $repository = $this->em->getRepository("Livraria\Entity\User");
+        $repository = $this->em->getRepository("Loja\Entity\User");
         $user = $repository->findByEmailAndPassword($this->getUsername(),  $this->getPassword());
         
         if ($user) {

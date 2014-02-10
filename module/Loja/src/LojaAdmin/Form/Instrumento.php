@@ -1,20 +1,20 @@
 <?php
 
-namespace LivrariaAdmin\Form;
+namespace LojaAdmin\Form;
 
 use Zend\Form\Form,
     Zend\Form\Element\Select;
 
-class Livro extends Form {
+class Instrumento extends Form {
     
     protected $categorias;
 
     public function __construct($name = null, array $categorias = null) {
-        parent::__construct('livro');
+        parent::__construct('instrumento');
         $this->categorias  = $categorias;
 
         $this->setAttribute('method', 'post');
-//       $this->setInputFilter(new LivroFilter);
+//       $this->setInputFilter(new InstrumentoFilter);
 
         $this->add(array(
             'name' => 'id',
@@ -43,29 +43,17 @@ class Livro extends Form {
         $this->add($categoria);
 
         $this->add(array(
-            'name' => 'autor',
+            'name' => 'marca',
             'options' => array(
                 'type' => 'text',
-                'label' => 'Autor' 
+                'label' => 'Marca' 
             ),
             'attributes' => array(
-                'id' => 'autor',
-                'placeholder' => 'Entre com o autor'
+                'id' => 'marca',
+                'placeholder' => 'Entre com o marca'
             ),
         ));
-        
-        $this->add(array(
-            'name' => 'isbn',
-            'options' => array(
-                'type' => 'text',
-                'label' => 'ISBN'
-            ),
-            'attributes' => array(
-                'id' => 'isbn',
-                'placeholder' => 'Entre com o ISBN'
-            ),
-        ));
-        
+       
         $this->add(array(
             'name' => 'valor',
             'options' => array(

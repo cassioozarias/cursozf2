@@ -1,6 +1,6 @@
 <?php
 
-namespace LivrariaAdmin\Form;
+namespace LojaAdmin\Form;
 
 use Zend\Form\Form;
 

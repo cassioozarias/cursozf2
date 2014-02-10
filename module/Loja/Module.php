@@ -1,6 +1,6 @@
 <?php
 
-namespace Livraria;
+namespace Loja;
 
 use Zend\Mvc\MoudeRouteListener,
     Zend\Mvc\MvcEvent,
@@ -10,13 +10,13 @@ use Zend\Authentication\AuthenticationService,
     Zend\Authentication\Storage\Session as  SessionStorage;
     
         
-use Livraria\Model\CategoriaTable;
-use Livraria\Service\Categoria as CategoriaService;
-use Livraria\Service\Livro as LivroService;
-use Livraria\Service\User as UserService;
-use LivrariaAdmin\Form\Livro as LivroFrm;
+use Loja\Model\CategoriaTable;
+use Loja\Service\Categoria as CategoriaService;
+use Loja\Service\Instrumento as InstrumentoService;
+use Loja\Service\User as UserService;
+use LojaAdmin\Form\Instrumento as InstrumentoFrm;
 
-use Livraria\Auth\Adapter as AuthAdapter;
+use Loja\Auth\Adapter as AuthAdapter;
 
 class Module {
 
@@ -49,15 +49,15 @@ class Module {
     
     public function init(ModuleManager $moduleManager) {
          $shareEvents = $moduleManager->getEventManager()->getSharedManager();
-         $shareEvents->attach("LivrariaAdminAuth", 'dispatch', function($e) {
+         $shareEvents->attach("LojaAdminAuth", 'dispatch', function($e) {
             $auth = new AuthenticationService;
-            $auth->setStorage(new SessionStorage("LivrariaAdmin"));
+            $auth->setStorage(new SessionStorage("LojaAdmin"));
             
             $controller = $e->getTarget();
             $matchedRoute = $controller->getEvent()->getRouteMatch()->getMatchedRouteName();
             
-        if (!$auth->hasIdentity() and ($matchedRoute == "livraria-admin" or $matchedRoute == "livraria-admin-interna")) {
-            return $controller->redirect()->toRoute('livraria-admin-auth');
+        if (!$auth->hasIdentity() and ($matchedRoute == "loja-admin" or $matchedRoute == "loja-admin-interna")) {
+            return $controller->redirect()->toRoute('loja-admin-auth');
         }  
          }, 99);
     }
@@ -65,28 +65,28 @@ class Module {
     public function getServiceConfig() {
         return array(
             'factories' => array(
-                'Livraria\Model\CategoriaService' => function($service) {
+                'Loja\Model\CategoriaService' => function($service) {
                     $dbAdapter = $service->get('Zend\Db\Adapter\Adapter');
                     $categoriaTable = new CategoriaTable($dbAdapter);
                     $categoriaService = new Model\CategoriaService($categoriaTable);
                     return $categoriaService;
                 },
-                'Livraria\Service\Categoria' => function($service) {
+                'Loja\Service\Categoria' => function($service) {
                     return new CategoriaService($service->get('Doctrine\ORM\EntityManager'));
                 },
-                 'Livraria\Service\Livro' => function($service) {
-                    return new LivroService($service->get('Doctrine\ORM\EntityManager'));
+                 'Loja\Service\Instrumento' => function($service) {
+                    return new InstrumentoService($service->get('Doctrine\ORM\EntityManager'));
                 },
-                  'Livraria\Service\User' => function($service) {
+                  'Loja\Service\User' => function($service) {
                     return new UserService($service->get('Doctrine\ORM\EntityManager'));
                 },      
-                  'LivrariaAdmin\Form\Livro' => function($service) {
+                  'LojaAdmin\Form\Instrumento' => function($service) {
                     $em = $service->get('Doctrine\ORM\EntityManager');
-                    $repository = $em->getRepository('Livraria\Entity\Categoria');
+                    $repository = $em->getRepository('Loja\Entity\Categoria');
                     $categorias = $repository->fetchPairs();
-                    return new LivroFrm(null, $categorias);
+                    return new InstrumentoFrm(null, $categorias);
                 },
-                  'Livraria\Auth\Adapter' => function($service) {
+                  'Loja\Auth\Adapter' => function($service) {
                     return new AuthAdapter($service->get('Doctrine\ORM\EntityManager'));
                 },      
             ),

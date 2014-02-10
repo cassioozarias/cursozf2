@@ -1,6 +1,6 @@
 <?php
 
-namespace Livraria\Entity;
+namespace Loja\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

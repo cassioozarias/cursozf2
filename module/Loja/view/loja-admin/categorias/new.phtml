@@ -5,7 +5,7 @@
 <?php
 $form = $this->form; 
 
-$form->setAttribute('action', $this->url('livraria-admin',array('controller'=>'categorias','action'=>'new')));
+$form->setAttribute('action', $this->url('loja-admin',array('controller'=>'categorias','action'=>'new')));
 
 $form->prepare();
 echo $this->form()->openTag($form);

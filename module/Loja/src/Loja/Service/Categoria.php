@@ -1,6 +1,6 @@
 <?php
 
-namespace Livraria\Service;
+namespace Loja\Service;
 
 use Doctrine\ORM\EntityManager;
 
@@ -8,6 +8,6 @@ class Categoria extends AbstractService {
     
     public function __construct(EntityManager $em) {
         parent::__construct($em);
-        $this->entity = "Livraria\Entity\Categoria";
+        $this->entity = "Loja\Entity\Categoria";
     }
 }

@@ -1,17 +1,17 @@
 <?php
 
-namespace LivrariaAdmin\Controller;
+namespace LojaAdmin\Controller;
 
 use Zend\View\Model\ViewModel;
 
-class LivrosController extends CrudController {
+class InstrumentosController extends CrudController {
 
     public function __construct() {
-        $this->entity = "Livraria\Entity\Livro";
-        $this->form = "LivrariaAdmin\Form\Livro";
-        $this->service = "Livraria\Service\Livro";
-        $this->controller = "livros";
-        $this->route = "livraria-admin";
+        $this->entity = "Loja\Entity\Instrumento";
+        $this->form = "LojaAdmin\Form\Instrumento";
+        $this->service = "Loja\Service\Instrumento";
+        $this->controller = "instrumentos";
+        $this->route = "loja-admin";
     }
 
     public function newAction() {
@@ -55,4 +55,5 @@ class LivrosController extends CrudController {
 
         return new ViewModel(array('form' => $form));
     }
+
 }

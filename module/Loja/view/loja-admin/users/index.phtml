@@ -2,7 +2,7 @@
 <br />
 
 <p> 
-    <a href="<?php echo  $this->url('livraria-admin',array('controller'=>'users','action'=>'new')); ?>">Novo</a>
+    <a href="<?php echo  $this->url('loja-admin',array('controller'=>'users','action'=>'new')); ?>">Novo</a>
 </p>
 
 <table class="table">
@@ -20,9 +20,9 @@
         <td><?php echo $entity->getEmail(); ?></td>
 
         <td>
-            <a href="<?php echo $this->url('livraria-admin-interna',
+            <a href="<?php echo $this->url('loja-admin-interna',
                   array('controller'=>'users','action'=>'edit','id'=>$entity->getId())); ?>">Editar</a>
-            <a href="<?php echo $this->url('livraria-admin-interna',
+            <a href="<?php echo $this->url('loja-admin-interna',
                   array('controller'=>'users','action'=>'delete','id'=>$entity->getId())); ?>">Deletar</a>
         </td>
    </tr>

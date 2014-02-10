@@ -1,9 +1,9 @@
 <?php
 
-namespace Livraria\Service;
+namespace Loja\Service;
 
 use Doctrine\ORM\EntityManager;
-use Livraria\Entity\Configurator;
+use Loja\Entity\Configurator;
 
 abstract class AbstractService {
 
@@ -43,7 +43,5 @@ abstract class AbstractService {
             return $id;
         }
     }
-    
-    
-    
+        
 }
